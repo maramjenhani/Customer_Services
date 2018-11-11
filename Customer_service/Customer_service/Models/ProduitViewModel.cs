@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Customer_service.Areas.administrateur.Models
+namespace Customer_service.Models
 {
     public class ProduitViewModel
     {

@@ -1,5 +1,4 @@
-﻿using Customer_service.Areas.administrateur.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,14 +8,16 @@ namespace Customer_service.Areas.administrateur.Controllers
 {
     public class DashboardController : Controller
 
-       
+
 
 
     {
+        //[Authorize(Roles ="admin")]
         // GET: administrateur/Dashboard
-        public ActionResult Accueil()
+        public ActionResult Index()
         {
-           
+            //return RedirectToAction("Login");
+
             return View();
         }
         public ActionResult Login()
@@ -24,10 +25,7 @@ namespace Customer_service.Areas.administrateur.Controllers
             return View();
         }
 
-        public ActionResult Produit()
-        {
-            return View();
-        }
-       
-       
+
+
+    }
 }

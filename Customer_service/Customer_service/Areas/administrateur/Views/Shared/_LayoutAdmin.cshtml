@@ -1,11 +1,7 @@
 ﻿<!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <!-- Added by HTTrack -->
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +38,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+
                 </div>
                 <!-- /.navbar-header -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -271,9 +267,14 @@
                                 </div>
                                 <!-- /input-group -->
                             </li>
-                            <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                            </li>
+                                <li>
+                                    @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @area = "administrateur" })
+                                </li>
+                         
+                                <li>
+                                    @Html.ActionLink("Login", "login", "Dashboard", null, new { @area = "administrateur" })
+                                </li>
+                         
                             <li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -287,13 +288,20 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                @*<a href="tables.html"><i class="fa fa-table fa-fw"></i> Produit</a>*@
-                             
-                                @Html.ActionLink("Product", "Produit", "Dashboard", null, new { @area = "administrateur" });
+                                <a href=""><i class="fa fa-table fa-fw"></i> Product</a>
+
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        @Html.ActionLink("Add Product", "Add", "EditProduct", null, new { @area = "administrateur" })
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Edit Product", "Edit", "EditProduct", null, new { @area = "administrateur" })
+                                    </li>
+                                </ul>
 
                             </li>
-                            <li> 
-                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a> 
+                            <li>
+                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>

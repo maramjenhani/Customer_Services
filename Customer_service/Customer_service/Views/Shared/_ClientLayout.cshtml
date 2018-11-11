@@ -71,12 +71,16 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active">@Html.ActionLink("Home", "test", "Home", null, null);
-                    </li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home", null, null) </li>
+           
+                    <li >@Html.ActionLink("Shop", "shop", "Home", null, null) </li>
+
+                    <li >@Html.ActionLink("Product", "produit", "Home", null, null) </li>
+
+                    <li >@Html.ActionLink("Cart", "cart", "Home", null, null) </li>
+
+                    <li>@Html.ActionLink("Checkout", "checkout", "Home", null, null) </li>
+
                 </ul>
             </nav>
             <!-- Button Group -->

@@ -1,5 +1,4 @@
-﻿using Customer_service.Areas.administrateur.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +8,14 @@ namespace Customer_service.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult test()
+        public ActionResult Index()
         {
+         
+            return View();
+        }
+        public ActionResult shop()
+        {
+          
             return View();
         }
 
@@ -22,18 +27,11 @@ namespace Customer_service.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult produit()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-        public ActionResult test()
-        {
-     
-            return View();
-        }
-
+   
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -41,16 +39,16 @@ namespace Customer_service.Controllers
             return View();
         }
 
-        public ActionResult GetProduit()
-        {
-            using (dotnetEntities db = new dotnetEntities())
-            {
-                var produit = db.Produit.ToList();
-                return Json(new { data = produit }, JsonRequestBehavior.AllowGet);
-                // return View();
-            }
+        //public ActionResult GetProduit()
+        //{
+        //    using (dotnetEntities db = new dotnetEntities())
+        //    {
+        //        var produit = db.Produit.ToList();
+        //        return Json(new { data = produit }, JsonRequestBehavior.AllowGet);
+        //        // return View();
+        //    }
 
 
-        }
+        //}
     }
 }

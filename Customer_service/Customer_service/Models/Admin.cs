@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Customer_service.Areas.administrateur.Models
+namespace Customer_service.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Commande
+    public partial class Admin
     {
-        public int idC { get; set; }
-        public int @ref { get; set; }
         public int id { get; set; }
-        public System.DateTime dateCommande { get; set; }
+        public string nomA { get; set; }
+        public string prenomA { get; set; }
+        public string emailA { get; set; }
+        public string password { get; set; }
     }
 }

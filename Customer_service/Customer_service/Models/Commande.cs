@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Customer_service.Areas.administrateur.Models
+namespace Customer_service.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Produit
+    public partial class Commande
     {
-        //public int @ref { get; set; }
-        //public string designation { get; set; }
-        //public string description { get; set; }
-        //public float prix { get; set; }
-        //public string couleur { get; set; }
-        //public byte[] photo { get; set; }
+        public int idC { get; set; }
+        public int @ref { get; set; }
+        public int id { get; set; }
+        public System.DateTime dateCommande { get; set; }
     }
 }

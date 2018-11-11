@@ -4,7 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dotnetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="myentites.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'dotnet.dbo.Admin' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nomA" />
+            <PropertyRef Name="prenomA" />
+            <PropertyRef Name="emailA" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nomA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenomA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="id" />
@@ -38,16 +54,25 @@
           <Property Name="couleur" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="photo" Type="varbinary" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="dotnetModelStoreContainer">
+        <EntityContainer Name="myentitesStoreContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Admin].[id] AS [id], 
+    [Admin].[nomA] AS [nomA], 
+    [Admin].[prenomA] AS [prenomA], 
+    [Admin].[emailA] AS [emailA], 
+    [Admin].[password] AS [password]
+    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dotnetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="myentites" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="id" />
@@ -68,7 +93,7 @@
           <Property Name="idC" Type="Int32" Nullable="false" />
           <Property Name="ref" Type="Int32" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="dateCommande" Type="DateTime" Nullable="false" />
+          <Property Name="dateCommande" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
@@ -81,19 +106,34 @@
           <Property Name="couleur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="photo" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="dotnetEntities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nomA" />
+            <PropertyRef Name="prenomA" />
+            <PropertyRef Name="emailA" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nomA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenomA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emailA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dotnetEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="Commande" EntityType="Self.Commande" />
           <EntitySet Name="Produit" EntityType="Self.Produit" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dotnetModelStoreContainer" CdmEntityContainer="dotnetEntities">
+        <EntityContainerMapping StorageEntityContainer="myentitesStoreContainer" CdmEntityContainer="dotnetEntities1">
           <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="dotnetModel.Client">
+            <EntityTypeMapping TypeName="myentites.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -107,7 +147,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Commande">
-            <EntityTypeMapping TypeName="dotnetModel.Commande">
+            <EntityTypeMapping TypeName="myentites.Commande">
               <MappingFragment StoreEntitySet="Commande">
                 <ScalarProperty Name="idC" ColumnName="idC" />
                 <ScalarProperty Name="ref" ColumnName="ref" />
@@ -117,7 +157,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Produit">
-            <EntityTypeMapping TypeName="dotnetModel.Produit">
+            <EntityTypeMapping TypeName="myentites.Produit">
               <MappingFragment StoreEntitySet="Produit">
                 <ScalarProperty Name="ref" ColumnName="ref" />
                 <ScalarProperty Name="designation" ColumnName="designation" />
@@ -125,6 +165,17 @@
                 <ScalarProperty Name="prix" ColumnName="prix" />
                 <ScalarProperty Name="couleur" ColumnName="couleur" />
                 <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="myentites.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nomA" ColumnName="nomA" />
+                <ScalarProperty Name="prenomA" ColumnName="prenomA" />
+                <ScalarProperty Name="emailA" ColumnName="emailA" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -145,6 +196,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

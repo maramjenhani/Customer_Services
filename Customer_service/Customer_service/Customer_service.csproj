@@ -158,49 +158,43 @@
     <Compile Include="Areas\administrateur\administrateurAreaRegistration.cs" />
     <Compile Include="Areas\administrateur\Controllers\DashboardController.cs" />
     <Compile Include="Areas\administrateur\Controllers\EditProductController.cs" />
-    <Compile Include="Areas\administrateur\Models\Client.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\administrateur\Models\Commande.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\administrateur\Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\administrateur\Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\administrateur\Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\administrateur\Models\Produit.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\administrateur\Models\ProduitViewModel.cs" />
+    <Compile Include="Areas\administrateur\Controllers\RoleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Commande.cs">
+      <DependentUpon>entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Produit.cs">
+      <DependentUpon>entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProduitViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\administrateur\Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Areas\administrateur\Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Content Include="assets\css\animate.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\classy-nav.min.css" />
@@ -284,6 +278,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>entities.edmx</DependentUpon>
+      <LastGenOutput>entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>entities.edmx</DependentUpon>
+      <LastGenOutput>entities.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -292,15 +296,6 @@
     <Content Include="Areas\administrateur\Views\web.config" />
     <Content Include="Areas\administrateur\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\administrateur\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\administrateur\Views\Dashboard\Login.cshtml" />
-    <Content Include="Areas\administrateur\Views\Dashboard\Produit.cshtml" />
-    <EntityDeploy Include="Areas\administrateur\Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Areas\administrateur\Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="assets\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\style.scssc" />
     <Content Include="assets\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\_mixin.scssc" />
     <Content Include="assets\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\_responsive.scssc" />
@@ -328,6 +323,16 @@
     <Content Include="assets\scss\_responsive.scss" />
     <Content Include="assets\scss\_theme_color.scss" />
     <Content Include="assets\scss\_variables.scss" />
+    <EntityDeploy Include="Models\entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\entities.edmx.diagram">
+      <DependentUpon>entities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\administrateur\Views\EditProduct\Edit.cshtml" />
+    <Content Include="Areas\administrateur\Views\EditProduct\Add.cshtml" />
+    <Content Include="Areas\administrateur\Views\Dashboard\Login.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -356,12 +361,12 @@
     <Content Include="Areas\administrateur\Views\Dashboard\unprod.cshtml" />
     <Content Include="Views\Shared\_ClientLayout.cshtml" />
     <Content Include="Views\Home\shop.cshtml" />
-    <Content Include="Views\Home\test.cshtml" />
+    <Content Include="Views\Home\produit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\administrateur\Views\EditProduct\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\administrateur\Models\" />
+    <Folder Include="Areas\administrateur\Views\Role\" />
     <Folder Include="Views\Produit\" />
   </ItemGroup>
   <ItemGroup>
